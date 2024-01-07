@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-node-image:
     docker:
-      - image: docker:latest
+      - image: cimg/node
         auth: 
           username: $user
           password: $ACCESS_TOKEN
