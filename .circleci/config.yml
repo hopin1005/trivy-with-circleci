@@ -1,8 +1,10 @@
-version: '2.1'
-orbs:
-  trivy: fifteen5/trivy@1.0.0
-workflows:
-  use-my-orb:
-    jobs:
-      - trivy/scan:
-          args: '--no-progress --exit-code 1 image busybox'
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: aquasec/trivy
+    steps:
+      - run:
+          name: run trivy
+          command: trivy image python:3.4-alpine
