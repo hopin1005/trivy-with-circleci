@@ -18,8 +18,6 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build Docker image
-          command: |
-            echo $user
-            echo $pass
+          name: Build Docker images
+          command:
             docker build -t node-test -f node-test/Dockerfile .
