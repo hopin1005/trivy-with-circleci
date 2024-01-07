@@ -13,7 +13,6 @@ jobs:
             apt-get update
             apt-get install npm
             docker build -t node-test -f node-test/Dockerfile .
-            docker image ls
             docker run aquasec/trivy
             sudo trivy image node-test
  
