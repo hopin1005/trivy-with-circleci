@@ -10,9 +10,10 @@ jobs:
       - run:
           name: Build Docker image
           command: 
-            sudo apt-get update && sudo apt-get install -y cowsay
-            docker build -t node-test -f node-test/Dockerfile .
-            docker image ls
+            sudo apt-get update
+            pwd && ls
+            #docker build -t node-test -f node-test/Dockerfile .
+            #docker image ls
           
   trivy-scan:
     docker:
@@ -21,6 +22,7 @@ jobs:
       - run:
           name: run trivy
           command: 
+            systemctl start docker
             trivy image node-test
 
 workflows:
