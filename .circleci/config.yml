@@ -1,12 +1,16 @@
 version: 2.1
 jobs:
   build:
+    context: dockerhub
     docker:
       - image: dockerfile
+        auth:
+          username: $user
+          password: $pass
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Build Docker image
           command: |
-            docker build -t your-image-name:tag -f node-test/Dockerfile .
+            docker build -t node-test -f node-test/Dockerfile .
