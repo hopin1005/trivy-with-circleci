@@ -4,17 +4,14 @@ jobs:
   build-node-image:
     docker:
       - image: cimg/node
-        auth: 
-          username: $user
-          password: $ACCESS_TOKEN
     steps:
       - checkout  
       - setup_remote_docker  
       - run:
           name: Build Docker image
-          command: |
-            sudo usermod -aG docker $user
+          command: 
             docker build -t node-test -f node-test/Dockerfile .
+            docker image ls
           
   build:
     docker:
@@ -22,4 +19,7 @@ jobs:
     steps:
       - run:
           name: run trivy
-          command: trivy image node-test
+          command: 
+            sudo usermod -aG docker $user
+            trivy image node-test
+            
