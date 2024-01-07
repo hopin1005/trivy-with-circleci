@@ -1,7 +1,7 @@
 version: 2.1
 
 workflows:
-  abc:
+  build:
     jobs:
       - build:
           context: 
@@ -11,11 +11,13 @@ jobs:
   build:
     docker:
       - image: dockerfile
+        auth:
+          username: $user
+          password: $pass
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Build Docker images
           command:
-            echo $user
             docker build -t node-test -f node-test/Dockerfile .
