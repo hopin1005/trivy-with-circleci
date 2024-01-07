@@ -1,10 +1,24 @@
 version: 2.1
 
 jobs:
+  build-node-image:
+    docker:
+      - image: docker:latest
+        auth: 
+          username: $user
+          password: $ACCESS_TOKEN
+    steps:
+      - checkout  
+      - setup_remote_docker  
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t node-test -f node-test/Dockerfile .
+          
   build:
     docker:
       - image: aquasec/trivy
     steps:
       - run:
           name: run trivy
-          command: trivy image python:3.4-alpine
+          command: trivy image node-test
