@@ -1,23 +1,8 @@
-version: 2.1
-
+version: '2.1'
+orbs:
+  trivy: fifteen5/trivy@1.0.0
 workflows:
-  build:
+  use-my-orb:
     jobs:
-      - build:
-          context: 
-            - dockerhub
-
-jobs:
-  build:
-    docker:
-      - image: dockerfile
-        auth:
-          username: $user
-          password: $ACCESS_TOKEN
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Build Docker images
-          command:
-            docker build -t node-test -f node-test/Dockerfile .
+      - trivy/scan:
+          args: '--no-progress --exit-code 1 image busybox'
