@@ -10,10 +10,9 @@ jobs:
       - run:
           name: Build Docker image
           command: 
-            pwd
-            ls
-            #docker build -t node-test -f node-test/Dockerfile .
-            #docker image ls
+            pwd && ls
+            docker build -t node-test -f node-test/Dockerfile .
+            docker image ls
           
  
 workflows:
