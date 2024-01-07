@@ -10,8 +10,9 @@ jobs:
       - run:
           name: Build Docker image
           command: 
-            - sudo apt-get update
-            - pwd && ls
+            sudo apt-get update
+            pwd
+            ls
             #docker build -t node-test -f node-test/Dockerfile .
             #docker image ls
           
