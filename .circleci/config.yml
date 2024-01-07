@@ -13,7 +13,7 @@ jobs:
       - image: dockerfile
         auth:
           username: $user
-          password: $pass
+          password: $ACCESS_TOKEN
     steps:
       - checkout
       - setup_remote_docker
