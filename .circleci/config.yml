@@ -15,7 +15,7 @@ jobs:
             docker build -t node-test -f node-test/Dockerfile .
             docker image ls
             docker run aquasec/trivy
-            trivy image node-test
+            sudo trivy image node-test
  
 workflows:
   version: 2
