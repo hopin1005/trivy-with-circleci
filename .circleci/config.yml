@@ -3,13 +3,14 @@ version: 2.1
 jobs:
   build-node-image:
     docker:
-      - image: cimg/base
+      - image: cimg/base:2024.01
     steps:
       - checkout  
       - setup_remote_docker  
       - run:
           name: Build Docker image
           command: 
+            sudo apt-get update && sudo apt-get install -y cowsay
             docker build -t node-test -f node-test/Dockerfile .
             docker image ls
           
@@ -20,7 +21,6 @@ jobs:
       - run:
           name: run trivy
           command: 
-            usermod -aG docker $user
             trivy image node-test
 
 workflows:
