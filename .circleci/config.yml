@@ -13,10 +13,7 @@ jobs:
             sudo apt-get update
             pwd
             ls
-
- workflows:
-   version: 2
-   build-and-scan:
-     jobs:
-       - build-node-image
-
+            #docker build -t node-test -f node-test/Dockerfile .
+            #docker image ls
+          
+ 
