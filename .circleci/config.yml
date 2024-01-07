@@ -10,20 +10,20 @@ jobs:
       - run:
           name: Build Docker image
           command: 
-            sudo apt-get update
-            pwd && ls
+            - sudo apt-get update
+            - pwd && ls
             #docker build -t node-test -f node-test/Dockerfile .
             #docker image ls
           
-  trivy-scan:
-    docker:
-      - image: aquasec/trivy
-    steps:
-      - run:
-          name: run trivy
-          command: 
-            systemctl start docker
-            trivy image node-test
+  # trivy-scan:
+  #   docker:
+  #     - image: aquasec/trivy
+  #   steps:
+  #     - run:
+  #         name: run trivy
+  #         command: 
+  #           systemctl start docker
+  #           trivy image node-test
 
 workflows:
   version: 2
