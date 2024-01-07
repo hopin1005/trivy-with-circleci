@@ -1,7 +1,14 @@
 version: 2.1
+
+workflows:
+  build:
+    jobs:
+      - build:
+          context: 
+            - dockerhub
+
 jobs:
   build:
-    context: dockerhub
     docker:
       - image: dockerfile
         auth:
