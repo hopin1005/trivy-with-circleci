@@ -3,5 +3,6 @@ FROM node:latest
 WORKDIR /app
 
 COPY package*.json ./
-RUN pwd && ls
+RUN ls -a
+RUN pwd
 RUN npm install
