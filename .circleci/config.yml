@@ -11,7 +11,7 @@ jobs:
       - checkout
 
       - run:
-          name: Install Node.js dependencies
+          name: Install Node.js dependencie
           command: |
             cd node-test
             npm install
