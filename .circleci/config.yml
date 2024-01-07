@@ -25,9 +25,9 @@ jobs:
   #           systemctl start docker
   #           trivy image node-test
 
-workflows:
-  version: 2
-  build-and-scan:
-    jobs:
-      - build-node-image
-      - trivy-scan
+# workflows:
+#   version: 2
+#   build-and-scan:
+#     jobs:
+#       - build-node-image
+#       - trivy-scan
