@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  trivy-orb: fifteen5/trivy-orb@1.0.0
 
 jobs:
   build_node:
@@ -19,3 +21,4 @@ workflows:
   build:
     jobs:
       - build_node
+      - trivy/scan
