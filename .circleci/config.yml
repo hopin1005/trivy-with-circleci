@@ -17,3 +17,8 @@ jobs:
             #docker image ls
           
  
+workflows:
+  version: 2
+  build-and-scan:
+    jobs:
+      - build-node-image
