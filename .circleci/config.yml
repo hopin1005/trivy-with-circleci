@@ -10,11 +10,11 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            sudo apt-get update
-            sudo apt-get install npm
+            ls
+            pwd
             docker build -t node-test -f node-test/Dockerfile .
             docker run aquasec/trivy
-            sudo trivy image node-test
+            trivy image node-test
  
 workflows:
   version: 2
