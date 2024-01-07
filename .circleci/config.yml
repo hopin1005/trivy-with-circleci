@@ -1,24 +1,12 @@
 version: 2.1
-orbs:
-  trivy-orb: fifteen5/trivy-orb@1.0.0
-
 jobs:
-  build_node:
+  build:
     docker:
-      - image: node:latest  
-
+      - image: dockerfile
     steps:
       - checkout
-
+      - setup_remote_docker
       - run:
-          name: Install Node.js dependencie
+          name: Build Docker image
           command: |
-            cd node-test
-            npm install
-
-workflows:
-  version: 2
-  build:
-    jobs:
-      - build_node
-      - trivy/scan
+            docker build -t your-image-name:tag -f node-test/Dockerfile .
