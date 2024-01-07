@@ -9,8 +9,9 @@ jobs:
       - setup_remote_docker  
       - run:
           name: Build Docker image
-          command: 
-            pwd && ls
+          command: |
+            pwd
+            ls
             docker build -t node-test -f node-test/Dockerfile .
             docker image ls
           
