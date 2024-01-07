@@ -13,22 +13,10 @@ jobs:
             sudo apt-get update
             pwd
             ls
-            #docker build -t node-test -f node-test/Dockerfile .
-            #docker image ls
-          
-  # trivy-scan:
-  #   docker:
-  #     - image: aquasec/trivy
-  #   steps:
-  #     - run:
-  #         name: run trivy
-  #         command: 
-  #           systemctl start docker
-  #           trivy image node-test
 
  workflows:
    version: 2
    build-and-scan:
      jobs:
        - build-node-image
-#       - trivy-scan
+
