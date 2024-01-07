@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
+            sudo usermod -aG docker $user
             docker build -t node-test -f node-test/Dockerfile .
           
   build:
