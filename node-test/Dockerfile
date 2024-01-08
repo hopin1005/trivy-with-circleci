@@ -2,5 +2,5 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY package*.json /app/package.json
+COPY node-test/package*.json /app/package.json
 RUN npm install
