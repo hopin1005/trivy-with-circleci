@@ -10,6 +10,8 @@ jobs:
       - run:
           name: Build Docker image
           command: |
+            sudo apt update
+            sudo apt upgrade
             docker build -t node-test -f node-test/Dockerfile .
             docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --exit-code 1 image --severity CRITICAL node-test 
 
