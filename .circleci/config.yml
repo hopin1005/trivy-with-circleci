@@ -36,6 +36,8 @@ workflows:
           type: approval
           requires:
             - build-node-image
-      - test-run
+      - test-run:
+          requires:
+            - hold
       
 
