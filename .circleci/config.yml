@@ -16,7 +16,6 @@ jobs:
     docker:
       - image: cimg/base:2024.01
     steps:
-      - when: on_fail
       - run:
           command: |
             echo "request-approve stage"
