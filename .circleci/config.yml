@@ -28,10 +28,10 @@ workflows:
   build-and-scan:
     jobs:
       - build-node-image
-      - hold:
-          type: approval
-          requires:
-            - build-node-image
-      - Now-Complete:
+      # - hold:
+      #     type: approval
+      #     requires:
+      #       - build-node-image
+      - Now-Complete
       
 
