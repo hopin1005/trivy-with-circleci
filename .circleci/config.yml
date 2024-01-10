@@ -35,6 +35,5 @@ workflows:
       - hold
           type: approval
           requires: request-approve
-          when: on_fail
       - Now-Complete
   
