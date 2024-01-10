@@ -17,11 +17,12 @@ jobs:
     docker:
       - image: cimg/base:2024.01
     steps:
+      - when: on_fail
       - run:
           name: Approval Complete
           command: |
             echo 'The work is now complete.'
-      - when: on_fail
+          
 
 workflows:
   version: 2
