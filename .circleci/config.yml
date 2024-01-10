@@ -17,8 +17,8 @@ jobs:
     docker:
       - image: cimg/base:2024.01
     steps:
-      - when: on_fail
       - run:
+          when: on_fail
           name: Approval Complete
           command: |
             echo 'The work is now complete.'
