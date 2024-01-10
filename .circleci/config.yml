@@ -19,13 +19,11 @@ jobs:
             echo 'you need wait for security check'
 
   test-run:
-    docker:
-      - image: cimg/base:2024.01
     steps:
       - run:
-        name: testetsetsetset
-        command: |
-          echo 'runnnnnnnn'
+          name: testetsetsetset
+          command: |
+            echo 'runnnnnnnn'
           
 workflows:
   version: 2
