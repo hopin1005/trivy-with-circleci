@@ -23,7 +23,7 @@ jobs:
       - image: cimg/base:2024.01
     steps:
       - run:
-        name: if-run
+        name: testetsetsetset
         command: |
           echo 'runnnnnnnn'
           
