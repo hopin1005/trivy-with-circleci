@@ -30,8 +30,8 @@ workflows:
       - build-node-image
       - hold:
           type: approval
-          when: on_fail
           requires:
             - build-node-image
+      - Now-Complete:
       
 
