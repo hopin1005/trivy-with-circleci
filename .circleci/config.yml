@@ -21,7 +21,7 @@ jobs:
           name: Approval Complete
           command: |
             echo 'The work is now complete.'
-          when: on_fail
+      - when: on_fail
 
 workflows:
   version: 2
