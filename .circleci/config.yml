@@ -21,17 +21,18 @@ jobs:
           name: Approval Complete
           command: |
             echo 'The work is now complete.'
+          when: on_fail
 
 workflows:
   version: 2
   build-and-scan:
     jobs:
       - build-node-image
-      - hold:
-          type: approval
-          requires:
-            - build-node-image
-      - Now-Complete:
-          requires:
-            - hold
+      # - hold:
+      #     type: approval
+      #     requires:
+      #       - build-node-image
+      # - Now-Complete:
+      #     requires:
+      #       - hold
 
