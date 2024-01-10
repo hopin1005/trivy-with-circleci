@@ -12,13 +12,6 @@ jobs:
           command: |
             docker build -t node-test -f node-test/Dockerfile .
             docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --exit-code 1 image node-test 
-  request-approve:
-    docker:
-      - image: cimg/base:2024.01
-    steps:
-      - run:
-          command: |
-            echo "request-approve stage"
 
   Now-Complete:
     docker:
@@ -37,7 +30,7 @@ workflows:
       - hold:
           type: approval
           requires:
-            - request-approve
+            - build-node-image
       - Now-Complete:
           requires:
             - hold
