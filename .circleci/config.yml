@@ -4,8 +4,8 @@ jobs:
   build-node-image:
     docker:
       - image: cimg/base:2024.01
-    if-failed:
-      customer:
+    parameters:
+      if-failed:
         type: boolean
         default: true
     steps:
