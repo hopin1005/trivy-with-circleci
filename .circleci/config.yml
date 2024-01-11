@@ -1,14 +1,13 @@
 version: 2.1
 
-parameters:
-  if-failed:
-    type: boolean
-    default: false
-
 jobs:
   build-node-image:
     docker:
       - image: cimg/base:2024.01
+    if-failed:
+      customer:
+        type: boolean
+        default: true
     steps:
       - checkout  
       - setup_remote_docker  
@@ -16,7 +15,7 @@ jobs:
           name: Build Docker image
           command: |
             docker build -t node-test -f node-test/Dockerfile .
-            docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy  image --exit-code 1 node-test ||  pipeline.parameters.if-failed=true && echo <<pipeline.parameters.if-failed>>
+            docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy  image --exit-code 1 node-test
       - run:
           name: security team check
           when: on_fail
@@ -36,11 +35,9 @@ workflows:
   version: 2
   build-and-scan:
     jobs:
-      - build-node-image
-      - hold:
-          type: approval
-          requires:
-            - build-node-image
-      - test-run
+      - build-node-image:
+        when:
+          and:
+          - equal: [ true, <<parameters.if-failed>> ]
       
 
