@@ -4,10 +4,6 @@ jobs:
   build-node-image:
     docker:
       - image: cimg/base:2024.01
-    parameters:
-      if-failed:
-        type: boolean
-        default: true
     steps:
       - checkout  
       - setup_remote_docker  
@@ -22,22 +18,11 @@ jobs:
           command: |
             echo 'you need wait for security check'
 
-  test-run:
-    docker:
-      - image: cimg/base:2024.01
-    steps:
-      - run:
-          name: testetsetsetset
-          command: |
-            echo 'aaaaaaaaaaaaaaaaa'
           
 workflows:
   version: 2
   build-and-scan:
     jobs:
       - build-node-image:
-        when:
-          and:
-          - equal: [ true, <<parameters.if-failed>> ]
       
 
