@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   if-failed:
     type: boolean
-    default: true
+    default: false
 
 jobs:
   build-node-image:
@@ -16,7 +16,7 @@ jobs:
           name: Build Docker image
           command: |
             docker build -t node-test -f node-test/Dockerfile .
-            docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --exit-code 1 image node-test ||  echo 0 > <<pipeline.parameters.if-failed>>
+            docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --exit-code 1 image node-test ||  <<pipeline.parameters.if-failed>> = true && echo <<pipeline.parameters.if-failed>>
       - run:
           name: security team check
           when: on_fail
