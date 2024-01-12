@@ -11,7 +11,7 @@ jobs:
           name: Build Docker image
           command: |
             docker build -t node-test -f node-test/Dockerfile .
-            docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy  image --exit-code 1 --severity CRITICAL node-test
+            docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy  image --exit-code 1 --ignore-unfixed --severity HIGH,CRITICAL node-test
     
 
           
